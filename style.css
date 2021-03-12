@@ -1,0 +1,35 @@
+h1 {
+   display: flex;
+   justify-content: center; 
+   color: white;
+   background-color: rgb(29, 29, 58);
+   padding: 20px;
+   margin-bottom: 0%;
+}
+
+main {
+    display: flex;
+    height: 100vh;
+}
+
+aside {
+    background-color: rgb(202, 202, 202);
+    width: 25vw;
+    padding: 10px;
+}
+
+section {
+    background-color: rgb(236, 235, 235);
+    width: 75vw;
+    padding: 10px;
+}
+
+.cityDash {
+    border-style: solid;
+    border-color: gray;
+}
+
+.weekday {
+    background-color: rgb(0, 140, 255);
+    color: white;
+}

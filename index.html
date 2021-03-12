@@ -10,25 +10,26 @@
     <link rel="stylesheet" type="text/css" href="./style.css" />
 </head>
 
-<h1>Weather Dashboard</h1>
 <body>
-    <aside>
-        <h3>Search for a City:</h3>
-        <form action="action.php" method="post" id="citySearch">
-            <input type="text" id="city" />
-            <input type="submit" id="searchBtn" class="btn btn-primary" value="🔍 "></input>
-        </form>
-    </aside>
-
+    <h1>Weather Dashboard</h1>
     <main>
-        <div id="cityDash"></div>
+        <aside>
+            <h3>Search for a City:</h3>
+            <input type="text" id="city" />
+            <button id="searchBtn" class="btn btn-primary">🔍 </button>
+            <div id="cityList"></div>
+        </aside>
+
         <section>
-            <h2>5-Day Forcast:</h2>
-            <div id="weekday"></div>
+            <div id="cityDash"></div>
+            <div>
+                <h2>5-Day Forcast:</h2>
+                <div id="week"></div>
+            </div>
         </section>
     </main>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="./JS/script.js"></script>
+    <script src="./script.js"></script>
 </body>
 </html>
