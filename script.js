@@ -44,7 +44,7 @@ $(document).ready(function () {
     //     cityName.append(weatherEmoji);
 
     //     // creates the list for the city
-    //     let cityWeatherList = $("<li>").addClass("li").attr("type", "li").css("text-decoration", "none");
+    //     let cityWeatherList = $("<li>").addClass("li").attr("type", "li");
     //     cityWeatherList.append("Temperature: " + city.temp) + " F";
     //     cityWeatherList.append("Humdity: " + city.humid + "%");
     //     cityWeatherList.append("Wind Speed: " + city.wind + " MPH");
@@ -57,9 +57,21 @@ $(document).ready(function () {
     //     dash.append(cityWeatherList);
     // }
 
-    function weatherCard(city) {
+    // function weatherCard(city) {
+    //     var weeklyWeather = $("#week");
 
-    }
+    //     // creates each weather card for the next 5 days
+    //     forEach in the 5 day forecast {
+    //         var dayCard = $("<div>").addClass("day").attr("type", "div");
+    //         dayCard.append($("<h4>").val(i.date).attr("type", "h4"));
+    //         dayCard.append(emoji);
+    //         dayCard.append($("<p>").val("Temp: " + i.temp + " F").attr("type", "p"));
+    //         dayCard.append($("<p>").val("Humidity: " + i.humid + "%").attr("type", "p"));
+
+    //         // adds each day card to the overall 5-day forecast
+    //         weeklyWeather.append(dayCard);
+    //     }
+    // }
 
     searchCityWeather("chicago");
 })
