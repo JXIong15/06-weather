@@ -110,12 +110,9 @@ You are required to submit BOTH of the following for review:
 ## Tasks Completed
 
 * Created IDs in the HTML file to reference via JQuery in the JS file.
-* Used the "hide" CSS to hide and display certain pages on the window.
-* Used a separate JS file to contain the array of quiz questions. In the array are objects for each question, their answer, and the choices.
-* Created a timer from one of the activities we did in class.
-* Created buttons for each choice and compared the user answer to the correct answer.
-* Created an array to store objects for the user's information: userName, userScore, and userTime from the current session.
-* Clicking the Submit button will allow the input to be set as a variable. The High Scores page is then displayed, showing the name, score, and time.
+* Created CSS styling using flexbox
+* In the JS file, created a button function that will search a user-specified city
+    * The button function then calls on another function, which uses an API to get the current weather information on that desired city.
 
 
 ## Incomplete Tasks
