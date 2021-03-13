@@ -5,7 +5,6 @@ $(document).ready(function () {
     // saves the city in local storage and generates a list of searched cities
     $("#searchBtn").on("click", function(i) {
         let city = $("#city").val();
-        console.log(city);
         searchCityWeather(city);
     })
 
@@ -30,7 +29,7 @@ $(document).ready(function () {
                 // gets the weather for the 5 day forecast
                 $.ajax({
                     type: "GET",
-                    URL: `http//:api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=imperial`,
+                    url: `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=imperial`,
                     datatype: "json",
                     success: function(data) {
                         console.log(data);
