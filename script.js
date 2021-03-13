@@ -49,8 +49,11 @@ $(document).ready(function () {
         dash.text(""); // empties the dash between each searched city
         // creates the city header
         let cityName = $("<h2>").text(data["name"] + " ").attr("type", "h2");
+        let iconURL =  "https://openweathermap.org/img/w/" + data["weather"][0]["icon"] + ".png";
+        let weatherIcon = $("<img alt='weather image'>").attr("src", iconURL);
+
         cityName.append(moment().format('l'));
-        cityName.append(data["cloud"]); // NEED TO FIGURE OUT EMOJI!!!
+        cityName.append(weatherIcon);
 
         // creates the list for the city
         let cityWeatherList = $("<p>").attr("type", "p").css("font-size", "20px");
@@ -78,7 +81,12 @@ $(document).ready(function () {
                 var dayNum = moment().add(i/8 * 1, 'days').format('l');
 
                 dayCard.append($("<h4>").text(dayNum).attr("type", "h4"));
-                // dayCard.append(emoji);
+                
+                // appends weather image to the day card
+                let iconURL =  "https://openweathermap.org/img/w/" + dayWeather["weather"][0]["icon"] + ".png";
+                let weatherIcon = $("<img alt='weather image'>").attr("src", iconURL);
+                dayCard.append(weatherIcon);
+
                 dayCard.append($("<p>").text("Temp: " + dayWeather["main"]["temp"] +  " °F").attr("type", "p"));
                 dayCard.append($("<p>").text("Humidity: " + dayWeather["main"]["humidity"] + "%").attr("type", "p"));
 
