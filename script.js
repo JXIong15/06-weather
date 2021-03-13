@@ -21,26 +21,26 @@ $(document).ready(function () {
                 // for (var i = 0; i < listEl.size(); i++) {
                     // if (listEl[i[1]] != searchCityWeather(city)) {
                         let cityBtn = $("<button>").text(city).attr("type", "button");
-                        listEl.append(cityBtn);
+                        listEl.prepend(cityBtn);
                         localStorage.setItem("cityBtn", "searchCityWeather(city)");
                     // }
                 // }
                 cityCard(data);
+
+                // gets the weather for the 5 day forecast
+                $.ajax({
+                    type: "GET",
+                    URL: `http//:api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=imperial`,
+                    datatype: "json",
+                    success: function(data) {
+                        console.log(data);
+                        weatherCard(data);
+                    }
+                })
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log(errorThrown);
                 alert("Please type in a real location.")
-            }
-        })
-        
-        // gets the weather for the 5 day forecast
-        $.ajax({
-            type: "GET",
-            URL: `http//:api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=imperial`,
-            datatype: "json",
-            success: function(data) {
-                console.log(data);
-                weatherCard(city);
             }
         })
     }
@@ -66,19 +66,20 @@ $(document).ready(function () {
         dash.append(cityWeatherList);
     }
 
-    function weatherCard(city) {
-        var weeklyWeather = $("#week");
+    function weatherCard(data) {
+        console.log("weathercard");
+    //     var weeklyWeather = $("#week");
 
-        // creates each weather card for the next 5 days
-        forEach in the 5 day forecast {
-            var dayCard = $("<div>").addClass("day").attr("type", "div");
-            dayCard.append($("<h4>").val(i.date).attr("type", "h4"));
-            dayCard.append(emoji);
-            dayCard.append($("<p>").val("Temp: " + i.temp + " °F").attr("type", "p"));
-            dayCard.append($("<p>").val("Humidity: " + i.humid + "%").attr("type", "p"));
+    //     // creates each weather card for the next 5 days
+    //     forEach in the 5 day forecast {
+    //         var dayCard = $("<div>").addClass("day").attr("type", "div");
+    //         dayCard.append($("<h4>").val(i.date).attr("type", "h4"));
+    //         dayCard.append(emoji);
+    //         dayCard.append($("<p>").val("Temp: " + i.temp + " °F").attr("type", "p"));
+    //         dayCard.append($("<p>").val("Humidity: " + i.humid + "%").attr("type", "p"));
 
-            // adds each day card to the overall 5-day forecast
-            weeklyWeather.append(dayCard);
-        }
+    //         // adds each day card to the overall 5-day forecast
+    //         weeklyWeather.append(dayCard);
+    //     }
     }
 })
