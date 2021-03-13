@@ -1,5 +1,10 @@
 # 06-weather
 
+# To Do
+* spacing between top card elements
+* UV Index
+
+
 # 06 Server-Side APIs: Weather Dashboard
 
 ## Your Task
