@@ -29,7 +29,7 @@ $(document).ready(function () {
                 // gets the weather for the 5 day forecast
                 $.ajax({
                     type: "GET",
-                    url: `http://api.openweathermap.org/data/2.5/forecast/daily?q=${city}&cnt=5&appid=${API_KEY}&units=imperial`, 
+                    url: `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=imperial`, 
                     datatype: "json",
                     success: function(data) {
                         console.log(data);
@@ -45,11 +45,11 @@ $(document).ready(function () {
     }
 
     function cityCard(data) {
-        let dash = $("#cityDash").css("border", "solid").css("border-color", "grey");
+        let dash = $("#cityDash").addClass("cityDash");
         dash.text(""); // empties the dash between each searched city
         // creates the city header
         let cityName = $("<h2>").text(data["name"] + " ").attr("type", "h2");
-        cityName.append(moment().format('MM/DD/YYYY'));
+        cityName.append(moment().format('l'));
         cityName.append(data["cloud"]); // NEED TO FIGURE OUT EMOJI!!!
 
         // creates the list for the city
@@ -66,20 +66,25 @@ $(document).ready(function () {
     }
 
     function weatherCard(data) {
-        var weeklyWeather = $("#week");
+        let weeklyWeather = $("#week");
+        weeklyWeather.text("");
+        $("#subhead").text("5-Day Forecast:");
 
         // creates each weather card for the next 5 days
-        // for (var i = 0; i < 40; i + 8) {
-            var dayCard = $("<div>").addClass("day").attr("type", "div");
-            // var day = data["list"][i];
-            // dayCard.append($("<h4>").text(day["dt_txt"]).attr("type", "h4"));
-            // dayCard.append(emoji);
-            // dayCard.append($("<p>").val("Temp: " + day["main"]["temp"] +  " °F").attr("type", "p"));
-            // console.log(day["main"]["temp"]);
-            // dayCard.append($("<p>").val("Humidity: " + i.humid + "%").attr("type", "p"));
+        for (var i = 0; i < 40; i++) {
+            if (i % 8 == 0) {
+                var dayCard = $("<div>").addClass("day col-12 col-md-2").attr("type", "div");
+                var dayWeather = data["list"][i];
+                var dayNum = moment().add(i/8 * 1, 'days').format('l');
 
-            // adds each day card to the overall 5-day forecast
-            // weeklyWeather.append(dayCard);
-        // }
+                dayCard.append($("<h4>").text(dayNum).attr("type", "h4"));
+                // dayCard.append(emoji);
+                dayCard.append($("<p>").text("Temp: " + dayWeather["main"]["temp"] +  " °F").attr("type", "p"));
+                dayCard.append($("<p>").text("Humidity: " + dayWeather["main"]["humidity"] + "%").attr("type", "p"));
+
+                // adds each day card to the overall 5-day forecast
+                weeklyWeather.append(dayCard).addClass("row");
+            }
+        }
     }
 })
