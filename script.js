@@ -29,7 +29,7 @@ $(document).ready(function () {
                 // gets the weather for the 5 day forecast
                 $.ajax({
                     type: "GET",
-                    url: `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=imperial`,
+                    url: `http://api.openweathermap.org/data/2.5/forecast/daily?q=${city}&cnt=5&appid=${API_KEY}&units=imperial`, 
                     datatype: "json",
                     success: function(data) {
                         console.log(data);
@@ -66,19 +66,20 @@ $(document).ready(function () {
     }
 
     function weatherCard(data) {
-        console.log("weathercard");
-    //     var weeklyWeather = $("#week");
+        var weeklyWeather = $("#week");
 
-    //     // creates each weather card for the next 5 days
-    //     forEach in the 5 day forecast {
-    //         var dayCard = $("<div>").addClass("day").attr("type", "div");
-    //         dayCard.append($("<h4>").val(i.date).attr("type", "h4"));
-    //         dayCard.append(emoji);
-    //         dayCard.append($("<p>").val("Temp: " + i.temp + " °F").attr("type", "p"));
-    //         dayCard.append($("<p>").val("Humidity: " + i.humid + "%").attr("type", "p"));
+        // creates each weather card for the next 5 days
+        // for (var i = 0; i < 40; i + 8) {
+            var dayCard = $("<div>").addClass("day").attr("type", "div");
+            // var day = data["list"][i];
+            // dayCard.append($("<h4>").text(day["dt_txt"]).attr("type", "h4"));
+            // dayCard.append(emoji);
+            // dayCard.append($("<p>").val("Temp: " + day["main"]["temp"] +  " °F").attr("type", "p"));
+            // console.log(day["main"]["temp"]);
+            // dayCard.append($("<p>").val("Humidity: " + i.humid + "%").attr("type", "p"));
 
-    //         // adds each day card to the overall 5-day forecast
-    //         weeklyWeather.append(dayCard);
-    //     }
+            // adds each day card to the overall 5-day forecast
+            // weeklyWeather.append(dayCard);
+        // }
     }
 })
