@@ -59,8 +59,14 @@ $(document).ready(function () {
         cityWeatherList.append("Humdity: " + data["main"]["humidity"] + "%" + "<br>");
         cityWeatherList.append("Wind Speed: " + data["wind"]["speed"] + " MPH" + "<br>");
         
+        // finds the UV Index and color-codes it
         let uvIndex = calcUV(data);
-        cityWeatherList.append("UV Index: " + uvIndex);
+        let uvIndexEl = $("<span>").attr("type", "span").text(uvIndex);
+        uvLight(uvIndex, uvIndexEl); // adds the correct color to the UV index
+        cityWeatherList.append("UV Index: ");
+        cityWeatherList.append(uvIndexEl.get(0));
+        console.log(uvIndex);
+        console.log(uvIndexEl.get(0));
 
         // adds the city header and its current weather data to the main dash
         dash.append(cityName);
@@ -81,6 +87,30 @@ $(document).ready(function () {
             }
         })
         return(uvIndex);
+    }
+
+    // Picks the correct color for the UV Index
+    function uvLight(uvIndex, uvIndexEl) {
+        uvIndexEl.css("padding", "5px");
+        uvIndexEl.css("border-radius", "5px");
+        if (uvIndex < 3) {
+            uvIndexEl.css("background-color", "green");
+            vIndexEl.css("color", "white");
+        }
+        if (uvIndex > 3 && uvIndex < 6) {
+            uvIndexEl.css("background-color", "yellow");
+        }
+        if (uvIndex > 6 && uvIndex < 8) {
+            uvIndexEl.css("background-color", "orange");
+        }
+        if (uvIndex > 8 && uvIndex < 11) {
+            uvIndexEl.css("background-color", "red");
+            vIndexEl.css("color", "white");
+        }
+        if (uvIndex > 11) {
+            uvIndexEl.css("background-color", "violet");
+            vIndexEl.css("color", "white");
+        }
     }
 
     function weatherCard(data) {
