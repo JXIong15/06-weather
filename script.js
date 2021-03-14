@@ -2,6 +2,11 @@ $(document).ready(function () {
     var API_KEY = "48d3bee5ac7cdd8e92b4de30d8718eca";
     var listEl = $("#cityList");
 
+    // // Displays the last 10 stored search values
+    // for (var i = 10; i > 0; i++) {
+    //     localStorage.getItem("cityBtn" + i);
+    // }
+
     // saves the city in local storage and generates a list of searched cities
     $("#searchBtn").on("click", function(i) {  
         var city = $("#city").val();
@@ -15,15 +20,18 @@ $(document).ready(function () {
             url: `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=imperial`,
             datatype: "json",
             success: function(data) {
-                // for (var i = 0; i < listEl.size(); i++) {
-                    // if (listEl[i[1]] != searchCityWeather(city)) {
-                        let cityBtn = $("<button>").text(city).attr("type", "button");
+                // for (var i = 10; i > 0; i--) {
+                    // if (cityBtn.val() != city) {
+                        let cityBtn = $("<button>").text(city).val(city.toLowerCase()).attr("type", "button");
                         listEl.prepend(cityBtn);
-                        localStorage.setItem("cityBtn", "searchCityWeather(city)");
+                        cityBtn.click(cityBtnFunc);
+                        localStorage.setItem("cityBtn" + "i", city);
                     // }
                 // }
+                console.log(localStorage);
+                console.log(listEl.get(0));
                 cityCard(data);
-
+                
                 // gets the weather for the 5 day forecast
                 $.ajax({
                     type: "GET",
@@ -65,8 +73,6 @@ $(document).ready(function () {
         uvLight(uvIndex, uvIndexEl); // adds the correct color to the UV index
         cityWeatherList.append("UV Index: ");
         cityWeatherList.append(uvIndexEl.get(0));
-        console.log(uvIndex);
-        console.log(uvIndexEl.get(0));
 
         // adds the city header and its current weather data to the main dash
         dash.append(cityName);
@@ -139,5 +145,10 @@ $(document).ready(function () {
                 weeklyWeather.append(dayCard).addClass("row");
             }
         }
+    }
+
+    function cityBtnFunc(event) {
+        event.preventDefault();
+        searchCityWeather($(this).val());
     }
 })
