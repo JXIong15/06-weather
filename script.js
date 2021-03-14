@@ -132,7 +132,6 @@ $(document).ready(function () {
         }
     }
 
-    // creates the 5-day forecast weather card(s)
     function weatherCard(data) {
         let weeklyWeather = $("#week");
         weeklyWeather.text("");
