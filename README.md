@@ -3,13 +3,12 @@
 # To Do
 * spacing between top card elements
 * UV Index
+* prevent repetitive buttons
+    * limit buttons to 10
 
 
 # 06 Server-Side APIs: Weather Dashboard
 
-## Your Task
-
-Third-party APIs allow developers to access their data and functionality by making requests with specific parameters to a URL. Developers are often tasked with retrieving data from another application's API and using it in the context of their own. Your challenge is to build a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS.
 
 Use the [OpenWeather API](https://openweathermap.org/api) to retrieve weather data for cities. The documentation includes a section called "How to start" that provides basic setup and usage instructions. You will use `localStorage` to store any persistent data.
 
@@ -131,7 +130,7 @@ You are required to submit BOTH of the following for review:
 
 ## Known Bugs
 
-* Timer is off. The timer on the screen is correct, but when grabbing the time for the high scores, that time is wrong.
+* Is not flexing on smaller screens. Instead of the original 2 columns, there should be one.
 
 
 ## Website Images

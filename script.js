@@ -1,16 +1,27 @@
 $(document).ready(function () {
     var API_KEY = "48d3bee5ac7cdd8e92b4de30d8718eca";
-    var listEl = $("#cityList");
+    var cityArr = JSON.parse(localStorage.getItem("cities")) || []; // array of searched cities
 
-    // // Displays the last 10 stored search values
-    // for (var i = 10; i > 0; i++) {
-    //     localStorage.getItem("cityBtn" + i);
-    // }
+    // creates the button list of the last 10 searched cities
+    function createMenu() {
+        let listEl = $("#cityList").text("");
+        if (cityArr.length > 0) {
+            for (var i = 0; i < cityArr.length; i++) {
+                var city = cityArr[i];
+                var cityBtn = $("<button>").css("text-transform", "capitalize").val(city).text(city).addClass("cityBtn").attr("type", "button");
+                listEl.prepend(cityBtn);
+                cityBtn.click(cityBtnFunc);
+            }
+        }
+    }
+    
+    // list of the last 10 searched locations
+    createMenu();
 
     // saves the city in local storage and generates a list of searched cities
     $("#searchBtn").on("click", function(i) { 
         i.preventDefault(); 
-        var city = $("#city").val();
+        var city = $("#city").val().toLowerCase();
         searchCityWeather(city);
     })
 
@@ -21,16 +32,15 @@ $(document).ready(function () {
             url: `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=imperial`,
             datatype: "json",
             success: function(data) {
-                // for (var i = 10; i > 0; i--) {
-                    // if (cityBtn.val() != city) {
-                        let cityBtn = $("<button>").text(city).val(city.toLowerCase()).attr("type", "button");
-                        listEl.prepend(cityBtn);
-                        cityBtn.click(cityBtnFunc);
-                        localStorage.setItem("cityBtn" + "i", city);
-                    // }
-                // }
-                console.log(localStorage);
-                console.log(listEl.get(0));
+                // checks the previous searches array to not duplicate buttons. Creates new city buttons accordingly.
+                if(cityArr.indexOf(city) === -1) {
+                    cityArr.push(city);
+                    if (cityArr.length > 10) { // makes sure the list of previously searched city is limited to 10
+                        cityArr.shift();
+                    }
+                    localStorage.setItem("cities", JSON.stringify(cityArr));
+                    createMenu();
+                }
                 cityCard(data);
                 
                 // gets the weather for the 5 day forecast
@@ -51,6 +61,7 @@ $(document).ready(function () {
         $("#city").val("");
     }
 
+    // creates the current weather card for the desired city
     function cityCard(data) {
         let dash = $("#cityDash").addClass("cityDash");
         dash.text(""); // empties the dash between each searched city
@@ -80,6 +91,7 @@ $(document).ready(function () {
         dash.append(cityWeatherList);
     }
 
+    // calculates the UV Index
     function calcUV(data) {
         let uvIndex;
         let lat = data["coord"]["lat"];
@@ -120,6 +132,7 @@ $(document).ready(function () {
         }
     }
 
+    // creates the 5-day forecast weather card(s)
     function weatherCard(data) {
         let weeklyWeather = $("#week");
         weeklyWeather.text("");
@@ -148,6 +161,7 @@ $(document).ready(function () {
         }
     }
 
+    // makes the city buttons function to the correct city weather
     function cityBtnFunc(event) {
         event.preventDefault();
         searchCityWeather($(this).val());
