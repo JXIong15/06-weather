@@ -82,7 +82,7 @@ $(document).ready(function () {
         // finds the UV Index and color-codes it
         let uvIndex = calcUV(data);
         let uvIndexEl = $("<span>").attr("type", "span").text(uvIndex);
-        uvLight(uvIndex, uvIndexEl); // adds the correct color to the UV index
+        uvColor(uvIndex, uvIndexEl); // adds the correct color to the UV index
         cityWeatherList.append("UV Index: ");
         cityWeatherList.append(uvIndexEl.get(0));
 
@@ -109,7 +109,7 @@ $(document).ready(function () {
     }
 
     // Picks the correct color for the UV Index
-    function uvLight(uvIndex, uvIndexEl) {
+    function uvColor(uvIndex, uvIndexEl) {
         uvIndexEl.css("padding", "5px");
         uvIndexEl.css("border-radius", "5px");
         if (uvIndex < 3) {
