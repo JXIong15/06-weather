@@ -23,6 +23,7 @@
         * Used an API to get the 5 day forecast for the desired city.
         * Used an API to calculate the UV Index for the desired city.
             * Created a function to color-code the UV Index accordingly.
+        * Used an API to append the weather icon to the correct weather card.
     * If the APIs do not work, an alert indicating what the problem is will pop up.
     * Another button is created in the left-hand column for the searched city, which is stored in localStorage.
         * When this button is clicked, then the city of the button name is searched using the function to display on the weather dash.
@@ -56,6 +57,7 @@
     * Current Weather: https://openweathermap.org/current
     * 5-Day Forecast: https://openweathermap.org/forecast5
     * UV Index: https://openweathermap.org/api/uvi
+    * Weather Icons: http://openweathermap.org/img/wn/10d@2x.png
 
 - - -
 © 2021 Jou Xiong, Northwestern Coding Bootcamp

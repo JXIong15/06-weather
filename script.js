@@ -29,7 +29,7 @@ $(document).ready(function () {
         // gets the current weather
         $.ajax({
             type: "GET",
-            url: `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=imperial`,
+            url: `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=imperial`,
             datatype: "json",
             success: function(data) {
                 // checks the previous searches array to not duplicate buttons. Creates new city buttons accordingly.
@@ -46,7 +46,7 @@ $(document).ready(function () {
                 // gets the weather for the 5 day forecast
                 $.ajax({
                     type: "GET",
-                    url: `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=imperial`, 
+                    url: `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=imperial`, 
                     datatype: "json",
                     success: function(data) {
                         weatherCard(data);
@@ -98,7 +98,7 @@ $(document).ready(function () {
         let lon = data["coord"]["lon"];
         $.ajax({
             type: "GET",
-            url: `http://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=${API_KEY}`,
+            url: `https://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=${API_KEY}`,
             datatype: "json",
             async: false,
             success: function(response) {
