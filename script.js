@@ -8,7 +8,8 @@ $(document).ready(function () {
     // }
 
     // saves the city in local storage and generates a list of searched cities
-    $("#searchBtn").on("click", function(i) {  
+    $("#searchBtn").on("click", function(i) { 
+        i.preventDefault(); 
         var city = $("#city").val();
         searchCityWeather(city);
     })
@@ -44,7 +45,7 @@ $(document).ready(function () {
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log(errorThrown);
-                alert("Please type in a real location.")
+                alert(errorThrown);
             }
         })
         $("#city").val("");
@@ -101,7 +102,7 @@ $(document).ready(function () {
         uvIndexEl.css("border-radius", "5px");
         if (uvIndex < 3) {
             uvIndexEl.css("background-color", "green");
-            vIndexEl.css("color", "white");
+            uvIndexEl.css("color", "white");
         }
         if (uvIndex > 3 && uvIndex < 6) {
             uvIndexEl.css("background-color", "yellow");
@@ -111,11 +112,11 @@ $(document).ready(function () {
         }
         if (uvIndex > 8 && uvIndex < 11) {
             uvIndexEl.css("background-color", "red");
-            vIndexEl.css("color", "white");
+            uvIndexEl.css("color", "white");
         }
         if (uvIndex > 11) {
             uvIndexEl.css("background-color", "violet");
-            vIndexEl.css("color", "white");
+            uvIndexEl.css("color", "white");
         }
     }
 
