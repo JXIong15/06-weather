@@ -138,12 +138,12 @@ $(document).ready(function () {
         $("#subhead").text("5-Day Forecast:");
 
         // creates each weather card for the next 5 days
-        for (var i = 1; i < 41; i++) {
+        for (var i = 0; i < 40; i++) {
             if (i % 8 == 0) {
                 var dayCard = $("<div>").addClass("day col-12 col-md-2").attr("type", "div");
                 var dayWeather = data["list"][i];
-                var dayNum = moment().add(i/8 * 1, 'days').format('l');
-
+                var dayNum = moment().add(i/8 * 1 + 1, 'days').format('l');
+                console.log(data);
                 dayCard.append($("<h4>").text(dayNum).attr("type", "h4"));
                 
                 // appends weather image to the day card
