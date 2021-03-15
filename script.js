@@ -138,7 +138,7 @@ $(document).ready(function () {
         $("#subhead").text("5-Day Forecast:");
 
         // creates each weather card for the next 5 days
-        for (var i = 0; i < 40; i++) {
+        for (var i = 1; i < 41; i++) {
             if (i % 8 == 0) {
                 var dayCard = $("<div>").addClass("day col-12 col-md-2").attr("type", "div");
                 var dayWeather = data["list"][i];
