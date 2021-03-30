@@ -4,6 +4,23 @@
     * Displays an interactive weather dashboard.
 * GitHub Repository Link: https://github.com/JXIong15/06-weather
 
+
+## Table of Contents
+* [Introduction](#introduction)
+* [Functionality](#functionality)
+* [Tasks Completed](#tasks-completed)
+* [Technologies Used](#technologies-used)
+* [Known Bugs](#known-bugs)
+* [Website Images](#website-images)
+* [Sources](#sources)
+* [Contact Me](#contact-me)
+
+
+## Introduction
+
+The user can get the current weather information of any place and the next five day forecast. The previous 10 searches are stroed in a column on the left of the page.
+
+
 ## Functionalitty
 
 * When the page is loaded, the main dash is empty. The left hand column should display up to the past 10 searched city (if there are any).
@@ -29,6 +46,13 @@
         * When this button is clicked, then the city of the button name is searched using the function to display on the weather dash.
         * Used an array of up to length 10 to make sure no repeat buttons are made
             * Formatted input values to be the same regardless of capitalization
+
+
+## Technologies Used
+* CSS, Bootstrap
+* HTML
+* JS, JQuery
+   * Local Storage
 
 
 ## Known Bugs
@@ -58,6 +82,11 @@
     * 5-Day Forecast: https://openweathermap.org/forecast5
     * UV Index: https://openweathermap.org/api/uvi
     * Weather Icons: http://openweathermap.org/img/wn/10d@2x.png
+
+
+## Contact Me
+* Email: jouxiong15@gmail.com
+* LinkedIn: https://www.linkedin.com/in/jou-xiong-109035112/
 
 - - -
 © 2021 Jou Xiong, Northwestern Coding Bootcamp
